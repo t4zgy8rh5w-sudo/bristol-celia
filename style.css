@@ -1,0 +1,459 @@
+/* =====================================================
+   STYLE.CSS — utilisé par index.html, video.html et qg.html
+   Palette "Ghibli chaleureux" :
+   - créme-papier   : fond principal, papier ancien
+   - vert-mousse    : accent principal (nature, calme)
+   - brun-terre     : texte, contours
+   - ocre-chaud     : accent secondaire (soleil, chaleur)
+   - bleu-brume     : accent tertiaire (météo, ciel)
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --creme-papier: #F3E9D2;
+  --creme-clair: #FBF6EA;
+  --vert-mousse: #4A6741;
+  --vert-clair: #7C9473;
+  --brun-terre: #5C4530;
+  --ocre-chaud: #C97D3F;
+  --bleu-brume: #7C99AC;
+  --ombre-douce: rgba(92, 69, 48, 0.18);
+  --font-titre: 'Caveat', cursive;
+  --font-texte: 'Quicksand', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-texte);
+  color: var(--brun-terre);
+  background-color: var(--creme-papier);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--vert-mousse);
+}
+
+/* Bouton générique réutilisé partout : forme organique, pas de gris SaaS */
+.bouton {
+  font-family: var(--font-texte);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 20px 6px 20px 6px; /* forme légèrement irrégulière, pas un rectangle SaaS parfait */
+  background: var(--vert-mousse);
+  color: var(--creme-clair);
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+  transition: transform 0.15s ease;
+}
+.bouton:hover {
+  transform: translateY(-2px);
+}
+.bouton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+.bouton.secondaire {
+  background: var(--ocre-chaud);
+}
+.bouton:disabled {
+  background: #B8AE9C;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cachee {
+  display: none !important;
+}
+
+/* ============ PAGE : index.html (mot de passe) ============ */
+
+.ecran-mdp {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(60, 45, 30, 0.35), rgba(60, 45, 30, 0.45)), url('images/bg-password.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.carte-mdp {
+  background: var(--creme-clair);
+  padding: 48px 40px;
+  border-radius: 24px 8px 24px 8px;
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 12px 30px var(--ombre-douce);
+  transform: rotate(-0.6deg);
+}
+
+.carte-mdp h1 {
+  font-family: var(--font-titre);
+  font-size: 2.4rem;
+  color: var(--vert-mousse);
+  margin: 0 0 8px;
+}
+
+.carte-mdp p.soustitre {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  color: var(--brun-terre);
+  opacity: 0.8;
+}
+
+.carte-mdp input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--vert-clair);
+  font-family: var(--font-texte);
+  font-size: 1rem;
+  margin-bottom: 16px;
+  background: var(--creme-papier);
+  color: var(--brun-terre);
+}
+
+.carte-mdp input:focus {
+  outline: 3px solid var(--ocre-chaud);
+  outline-offset: 1px;
+}
+
+#message-erreur {
+  color: #A23E2E;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+
+/* ============ PAGE : video.html ============ */
+
+.ecran-video {
+  min-height: 100vh;
+  background: #2B2018;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.ecran-video video {
+  max-width: 92%;
+  max-height: 75vh;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+}
+
+.ecran-video p {
+  color: var(--creme-clair);
+  font-family: var(--font-titre);
+  font-size: 1.6rem;
+  margin-top: 20px;
+}
+
+#bouton-continuer {
+  margin-top: 20px;
+}
+
+/* ============ PAGE : qg.html ============ */
+
+.qg-body {
+  background-image: linear-gradient(rgba(243,233,210,0.75), rgba(243,233,210,0.9)), url('images/bg-qg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.qg-header {
+  text-align: center;
+  padding: 40px 20px 10px;
+}
+
+.qg-header h1 {
+  font-family: var(--font-titre);
+  font-size: 3.2rem;
+  color: var(--vert-mousse);
+  margin: 0;
+}
+
+.qg-header p {
+  margin: 4px 0 0;
+  opacity: 0.75;
+}
+
+.lien-revoir-video {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--brun-terre);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Dashboard : petit panneau "épinglé" dans le coin, pas une carte SaaS classique */
+.dashboard-coin {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: var(--creme-clair);
+  border-radius: 4px 18px 4px 18px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 20px var(--ombre-douce);
+  transform: rotate(2deg);
+  z-index: 50;
+  max-width: 190px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(92,69,48,0.1);
+}
+
+.dashboard-coin .horloge {
+  font-family: var(--font-titre);
+  font-size: 1.8rem;
+  color: var(--vert-mousse);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.dashboard-coin .meteo {
+  color: var(--bleu-brume);
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.dashboard-coin .fait-bristol {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .dashboard-coin {
+    position: static;
+    margin: 16px auto;
+    transform: none;
+    max-width: 320px;
+    text-align: center;
+  }
+}
+
+/* Grille principale du QG : tailles volontairement inégales, pas uniformes */
+.qg-grille {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 20px auto 80px;
+  padding: 0 24px;
+}
+
+.carte {
+  background: var(--creme-clair);
+  padding: 26px;
+  box-shadow: 0 10px 24px var(--ombre-douce);
+  border: 1px solid rgba(92,69,48,0.08);
+}
+
+.carte h2 {
+  font-family: var(--font-titre);
+  font-size: 1.9rem;
+  margin: 0 0 12px;
+  color: var(--vert-mousse);
+}
+
+/* Chaque section a sa propre forme / position, comme des objets posés sur un bureau */
+
+.carte-lettres {
+  grid-column: span 4;
+  border-radius: 4px 26px 4px 26px;
+}
+
+.carte-blague {
+  grid-column: span 2;
+  border-radius: 22px 4px 22px 4px;
+  background: linear-gradient(135deg, var(--ocre-chaud), #DE9A5F);
+  color: var(--creme-clair);
+  transform: rotate(-1deg);
+}
+.carte-blague h2 { color: var(--creme-clair); }
+
+.carte-mediatrice {
+  grid-column: span 3;
+  border-radius: 26px 4px 26px 4px;
+}
+
+.carte-countdown {
+  grid-column: span 3;
+  border-radius: 4px 4px 26px 26px;
+  text-align: center;
+  transform: rotate(0.8deg);
+}
+
+.carte-escargot {
+  grid-column: span 6;
+  border-radius: 30px 30px 4px 4px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .qg-grille {
+    grid-template-columns: 1fr;
+  }
+  .carte-lettres, .carte-blague, .carte-mediatrice, .carte-countdown, .carte-escargot {
+    grid-column: span 1;
+    transform: none;
+  }
+}
+
+/* --- Boîte aux lettres --- */
+.liste-lettres {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lettre-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--creme-papier);
+  padding: 12px 16px;
+  border-radius: 4px 14px 4px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.lettre-item:hover {
+  background: #ECE0C4;
+}
+.lettre-titre {
+  font-weight: 600;
+}
+.lettre-date {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.modal-fond {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(43,32,24,0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+.modal-fond.visible {
+  display: flex;
+}
+.modal-lettre-papier {
+  background: var(--creme-clair);
+  background-image: repeating-linear-gradient(rgba(92,69,48,0.04) 0 1px, transparent 1px 32px);
+  max-width: 480px;
+  width: 100%;
+  padding: 36px;
+  border-radius: 4px 24px 4px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-lettre-papier h3 {
+  font-family: var(--font-titre);
+  font-size: 2rem;
+  margin: 0 0 4px;
+  color: var(--vert-mousse);
+}
+.modal-lettre-papier .modal-date {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-bottom: 18px;
+}
+.modal-lettre-papier .modal-contenu {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.modal-fermer {
+  margin-top: 24px;
+}
+
+/* --- Médiatrice de Paix --- */
+.liste-ressources {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ressource-item {
+  display: block;
+  background: var(--creme-papier);
+  padding: 12px 16px;
+  border-radius: 14px 4px 14px 4px;
+  text-decoration: none;
+  color: var(--brun-terre);
+}
+.ressource-item strong {
+  color: var(--vert-mousse);
+}
+.ressource-item p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* --- Compte à rebours --- */
+#countdown-affichage {
+  font-family: var(--font-titre);
+  font-size: 2.2rem;
+  color: var(--ocre-chaud);
+  margin: 10px 0 18px;
+}
+.lien-avent.verrouille {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* --- Escargot Tamagotchi --- */
+.escargot-visuel {
+  font-size: 4rem;
+  margin: 10px 0;
+}
+.barre-fond {
+  background: var(--creme-papier);
+  border-radius: 20px;
+  height: 14px;
+  overflow: hidden;
+  margin: 6px 0 14px;
+}
+.barre-remplissage {
+  height: 100%;
+  background: var(--vert-mousse);
+  transition: width 0.4s ease;
+}
+.barre-remplissage.bonheur {
+  background: var(--ocre-chaud);
+}
+.stats-escargot {
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: left;
+}
+.stats-escargot label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+.boutons-escargot {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}

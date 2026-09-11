@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le QG</title>
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="qg-body">
+
+  <!-- ===== Dashboard chill, épinglé dans le coin ===== -->
+  <div class="dashboard-coin">
+    <div class="horloge" id="horloge">--:--</div>
+    <div class="meteo" id="meteo-affichage">Météo de Bristol...</div>
+    <div class="fait-bristol" id="fait-bristol"></div>
+  </div>
+
+  <!-- ===== En-tête ===== -->
+  <header class="qg-header">
+    <h1>Le QG 🌸</h1>
+    <p>Ton petit coin, où que tu sois</p>
+    <a class="lien-revoir-video" href="video.html">🎬 Revoir la vidéo</a>
+  </header>
+
+  <!-- ===== Grille des sections ===== -->
+  <main class="qg-grille">
+
+    <!-- Boîte aux lettres -->
+    <section class="carte carte-lettres">
+      <h2>✉️ Depuis la Normandie</h2>
+      <div class="liste-lettres" id="liste-lettres"></div>
+    </section>
+
+    <!-- Blague du jour -->
+    <section class="carte carte-blague">
+      <h2>Le fait du jour</h2>
+      <p id="blague-du-jour">Chargement...</p>
+    </section>
+
+    <!-- Médiatrice de Paix -->
+    <section class="carte carte-mediatrice">
+      <h2>🕊️ Médiatrice de Paix</h2>
+      <div class="liste-ressources" id="liste-ressources"></div>
+    </section>
+
+    <!-- Compte à rebours mystère -->
+    <section class="carte carte-countdown">
+      <h2>?</h2>
+      <div id="countdown-affichage">--</div>
+      <a href="#" id="lien-avent" class="bouton lien-avent verrouille">🔒 Encore un peu de patience</a>
+    </section>
+
+    <!-- Escargot Tamagotchi -->
+    <section class="carte carte-escargot">
+      <h2>🐌 Ton compagnon</h2>
+      <div class="escargot-visuel" id="escargot-visage">🐌</div>
+      <div class="stats-escargot">
+        <label>Faim</label>
+        <div class="barre-fond"><div class="barre-remplissage" id="barre-faim" style="width:80%"></div></div>
+        <label>Bonheur</label>
+        <div class="barre-fond"><div class="barre-remplissage bonheur" id="barre-bonheur" style="width:80%"></div></div>
+      </div>
+      <div class="boutons-escargot">
+        <button class="bouton" onclick="nourrirEscargot()">🥬 Nourrir</button>
+        <button class="bouton secondaire" onclick="caresserEscargot()">💛 Câliner</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Modal pour lire une lettre ===== -->
+  <div class="modal-fond" id="modal-lettre">
+    <div class="modal-lettre-papier">
+      <h3 id="modal-lettre-titre"></h3>
+      <div class="modal-date" id="modal-lettre-date"></div>
+      <div class="modal-contenu" id="modal-lettre-contenu"></div>
+      <button class="bouton modal-fermer" onclick="fermerLettre()">Fermer</button>
+    </div>
+  </div>
+
+  <script src="qg.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un petit coin rien qu'à toi</title>
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="ecran-mdp">
+
+  <div class="carte-mdp">
+    <h1>Bienvenue 🌿</h1>
+    <p class="soustitre">Un endroit rien que pour toi t'attend...</p>
+
+    <input
+      type="password"
+      id="champ-mdp"
+      placeholder="Le mot de passe secret"
+      autocomplete="off"
+    >
+    <br>
+    <button class="bouton" onclick="verifierMotDePasse()">Entrer</button>
+
+    <p id="message-erreur" class="cachee">Ce n'est pas tout à fait ça... réessaie 🌧️</p>
+  </div>
+
+<script>
+  // Le mot de passe attendu. Change-le ici si un jour tu veux le modifier.
+  const MOT_DE_PASSE_ATTENDU = "Maxou";
+
+  function verifierMotDePasse() {
+    const saisie = document.getElementById('champ-mdp').value;
+    const messageErreur = document.getElementById('message-erreur');
+
+    if (saisie === MOT_DE_PASSE_ATTENDU) {
+      // Mot de passe correct : on regarde si c'est déjà venue ou non
+      const dejaVuIntro = localStorage.getItem('introVideoVue');
+
+      if (dejaVuIntro === 'true') {
+        // Déjà venue -> on saute directement au QG
+        window.location.href = 'qg.html';
+      } else {
+        // Première visite -> on passe par la vidéo d'abord
+        window.location.href = 'video.html';
+      }
+    } else {
+      messageErreur.classList.remove('cachee');
+    }
+  }
+
+  // Permet de valider avec la touche Entrée, pas seulement le bouton
+  document.getElementById('champ-mdp').addEventListener('keyup', function(evenement) {
+    if (evenement.key === 'Enter') {
+      verifierMotDePasse();
+    }
+  });
+</script>
+
+</body>
+</html>

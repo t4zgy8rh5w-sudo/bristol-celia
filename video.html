@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un petit mot avant de commencer...</title>
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="ecran-video">
+
+  <video id="ma-video" src="video-surprise.mp4" poster="images/poster-video.jpg" controls autoplay playsinline></video>
+
+  <p>Prête ?</p>
+  <button id="bouton-continuer" class="bouton secondaire cachee" onclick="allerAuQG()">
+    Entrer au QG →
+  </button>
+
+<script>
+  const video = document.getElementById('ma-video');
+  const bouton = document.getElementById('bouton-continuer');
+
+  // Le bouton n'apparaît que quand la vidéo est terminée,
+  // pour être sûr qu'elle la voie en entier avant de continuer.
+  video.addEventListener('ended', function() {
+    bouton.classList.remove('cachee');
+  });
+
+  function allerAuQG() {
+    // On mémorise que la vidéo a été vue, pour ne plus la forcer la prochaine fois
+    localStorage.setItem('introVideoVue', 'true');
+    window.location.href = 'qg.html';
+  }
+</script>
+
+</body>
+</html>
