@@ -8,14 +8,13 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             
-            /* Les couleurs chaudes et froides en fond par défaut */
-            background: linear-gradient(135deg, #ffb347 0%, #ff7b54 40%, #4a90e2 100%);
-            
-            /* Quand tu auras généré ton image Ghibli, enlève les /* et */ autour de la ligne en dessous et mets le lien de ton image */
-            /* background-image: url('TON_LIEN_IMAGE_ICI'); */
+            /* ICI C'EST LE FOND DE DEPART (FOND 1) */
+            background-image: url('FOND 1.jpg'); 
             
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.8s ease-in-out; /* ça fait un fondu stylé quand ça change */
             color: #333;
             display: flex;
             justify-content: center;
@@ -23,18 +22,21 @@
             height: 100vh;
             margin: 0;
         }
+
         .card {
-            background: rgba(255, 255, 255, 0.85); /* Un peu transparent */
-            backdrop-filter: blur(8px); /* Effet flou sur le fond */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             text-align: center;
             max-width: 500px;
             width: 90%;
         }
+
         h1 { font-size: 1.8rem; margin-bottom: 10px; color: #d35400; }
         p { font-size: 1rem; color: #444; margin-bottom: 20px; }
+        
         input {
             width: 80%;
             padding: 12px;
@@ -46,6 +48,7 @@
             margin-bottom: 15px;
         }
         input:focus { border-color: #e67e22; }
+        
         button {
             background-color: #e67e22;
             color: white;
@@ -57,18 +60,28 @@
             transition: background 0.2s;
         }
         button:hover { background-color: #d35400; }
+        
+        /* LE BOUTON QG */
+        .btn-qg {
+            background-color: #27ae60;
+            margin-top: 20px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .btn-qg:hover { background-color: #219150; }
+
         .error { color: #c0392b; margin-top: 10px; font-size: 0.9rem; display: none; }
         
         #secret-content { display: none; }
-        
-        /* Pour que la vidéo youtube prenne bien la place */
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
-            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         .video-container iframe {
             position: absolute;
@@ -91,18 +104,21 @@
         <div class="error" id="error-msg">Oups, c'est pas ça ! ❌</div>
     </div>
 
-    <!-- CONTENU DÉBLOQUÉ (Vidéo) -->
+    <!-- CONTENU DÉBLOQUÉ -->
     <div class="card" id="secret-content">
-        <h1>Bienvenue ! 🎉</h1>
-        <p>Petite surprise pour toi...</p>
+        <h1>Destination Bristol ✈️</h1>
+        
         <div class="video-container">
-            <!-- La vidéo apparaitra ici -->
+            <!-- N'OUBLIE PAS DE METTRE L'ID DE TA VIDEO ICI -->
             <iframe id="maVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+
+        <!-- LE BOUTON POUR ALLER AU QG -->
+        <button class="btn-qg" onclick="window.location.href='qg.html'">Accéder au QG 🚀</button>
+
     </div>
 
     <script>
-        // LE MOT DE PASSE EST LA 
         const bonMotDePasse = "Maxou"; 
 
         function checkPassword() {
@@ -113,12 +129,14 @@
             const maVideo = document.getElementById("maVideo");
 
             if (userPassword === bonMotDePasse) {
+                // On cache le code et on affiche la suite
                 loginBox.style.display = "none";
                 secretContent.style.display = "block";
                 
-                // C'EST ICI POUR LA VIDÉO !
-                // Remplace "ID_DE_TA_VIDEO" par le code de ta vidéo Youtube
-                // genre si ton lien c'est youtube.com/watch?v=dQw4w9WgXcQ, tu mets juste dQw4w9WgXcQ
+                // ICI ON CHANGE LE FOND POUR METTRE LE FOND 2
+                document.body.style.backgroundImage = "url('FOND 2.jpg')";
+                
+                // On lance la vidéo
                 maVideo.src = "https://www.youtube.com/embed/ID_DE_TA_VIDEO?autoplay=1";
             } else {
                 errorMsg.style.display = "block";
