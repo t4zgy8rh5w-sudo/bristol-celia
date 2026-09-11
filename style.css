@@ -168,7 +168,7 @@ a {
 /* ============ PAGE : qg.html ============ */
 
 .qg-body {
-  background-image: linear-gradient(rgba(243,233,210,0.75), rgba(243,233,210,0.9)), url('images/bg-qg.jpg');
+  background-image: linear-gradient(rgba(243,233,210,0.2), rgba(243,233,210,0.5)), url('images/bg-qg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
