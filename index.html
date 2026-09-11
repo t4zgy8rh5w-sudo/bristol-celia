@@ -6,18 +6,97 @@
     <title>Pour toi ❤️</title>
     <style>
         body {
-            font-family: sans-serif;
-            background-color: #fce4ec;
-            color: #ad1457;
-            text-align: center;
-            padding-top: 20vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            color: #880e4f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        h1 { font-size: 2.5rem; }
-        p { font-size: 1.2rem; }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        p { font-size: 1rem; color: #666; margin-bottom: 20px; }
+        input {
+            width: 80%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #f8bbd0;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        input:focus { border-color: #ad1457; }
+        button {
+            background-color: #ad1457;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #880e4f; }
+        .error { color: #d32f2f; margin-top: 10px; font-size: 0.9rem; display: none; }
+        
+        /* Style de la partie cachée (débloquée) */
+        #secret-content { display: none; }
     </style>
 </head>
 <body>
-    <h1>Bientôt à Bristol... ✈️</h1>
-    <p>Le site est en cours de construction pour toi !</p>
+
+    <!-- ÉCRAN DU MOT DE PASSE -->
+    <div class="card" id="login-box">
+        <h1>Chut... 🤫</h1>
+        <p>Entre le mot de passe secret pour accéder à ta surprise.</p>
+        <input type="password" id="password-input" placeholder="Mot de passe...">
+        <br>
+        <button onclick="checkPassword()">Valider</button>
+        <div class="error" id="error-msg">Oups, ce n'est pas le bon mot de passe ! ❌</div>
+    </div>
+
+    <!-- CONTENU DU SITE (Débloqué après) -->
+    <div class="card" id="secret-content">
+        <h1>Bien joué ! 🎉</h1>
+        <p>Le site est officiellement débloqué. Prochaine étape : on met quoi ici ?</p>
+    </div>
+
+    <script>
+        // 🔐 MODIFIE LE MOT DE PASSE ICI (entre les guillemets) :
+        const bonMotDe Passe = "bristol2026"; 
+
+        function checkPassword() {
+            const userPassword = document.getElementById("password-input").value;
+            const loginBox = document.getElementById("login-box");
+            const secretContent = document.getElementById("secret-content");
+            const errorMsg = document.getElementById("error-msg");
+
+            if (userPassword === bonMotDe Passe) {
+                loginBox.style.display = "none";
+                secretContent.style.display = "block";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        }
+
+        // Permet d'appuyer sur "Entrée" pour valider
+        document.getElementById("password-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+
 </body>
 </html>
