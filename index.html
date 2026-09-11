@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pour toi ❤️</title>
+    <title>Surprise ! 🌸</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-            color: #880e4f;
+            
+            /* Les couleurs chaudes et froides en fond par défaut */
+            background: linear-gradient(135deg, #ffb347 0%, #ff7b54 40%, #4a90e2 100%);
+            
+            /* Quand tu auras généré ton image Ghibli, enlève les /* et */ autour de la ligne en dessous et mets le lien de ton image */
+            /* background-image: url('TON_LIEN_IMAGE_ICI'); */
+            
+            background-size: cover;
+            background-position: center;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,29 +24,30 @@
             margin: 0;
         }
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.85); /* Un peu transparent */
+            backdrop-filter: blur(8px); /* Effet flou sur le fond */
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 90%;
         }
-        h1 { font-size: 1.8rem; margin-bottom: 10px; }
-        p { font-size: 1rem; color: #666; margin-bottom: 20px; }
+        h1 { font-size: 1.8rem; margin-bottom: 10px; color: #d35400; }
+        p { font-size: 1rem; color: #444; margin-bottom: 20px; }
         input {
             width: 80%;
             padding: 12px;
             font-size: 1rem;
-            border: 2px solid #f8bbd0;
+            border: 2px solid #ffb347;
             border-radius: 10px;
             outline: none;
             text-align: center;
             margin-bottom: 15px;
         }
-        input:focus { border-color: #ad1457; }
+        input:focus { border-color: #e67e22; }
         button {
-            background-color: #ad1457;
+            background-color: #e67e22;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -47,11 +56,27 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        button:hover { background-color: #880e4f; }
-        .error { color: #d32f2f; margin-top: 10px; font-size: 0.9rem; display: none; }
+        button:hover { background-color: #d35400; }
+        .error { color: #c0392b; margin-top: 10px; font-size: 0.9rem; display: none; }
         
-        /* Style de la partie cachée (débloquée) */
         #secret-content { display: none; }
+        
+        /* Pour que la vidéo youtube prenne bien la place */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -59,38 +84,47 @@
     <!-- ÉCRAN DU MOT DE PASSE -->
     <div class="card" id="login-box">
         <h1>Chut... 🤫</h1>
-        <p>Entre le mot de passe secret pour accéder à ta surprise.</p>
+        <p>Un petit mot de passe pour la route ?</p>
         <input type="password" id="password-input" placeholder="Mot de passe...">
         <br>
         <button onclick="checkPassword()">Valider</button>
-        <div class="error" id="error-msg">Oups, ce n'est pas le bon mot de passe ! ❌</div>
+        <div class="error" id="error-msg">Oups, c'est pas ça ! ❌</div>
     </div>
 
-    <!-- CONTENU DU SITE (Débloqué après) -->
+    <!-- CONTENU DÉBLOQUÉ (Vidéo) -->
     <div class="card" id="secret-content">
-        <h1>Bien joué ! 🎉</h1>
-        <p>Le site est officiellement débloqué. Prochaine étape : on met quoi ici ?</p>
+        <h1>Bienvenue ! 🎉</h1>
+        <p>Petite surprise pour toi...</p>
+        <div class="video-container">
+            <!-- La vidéo apparaitra ici -->
+            <iframe id="maVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
-        // 🔐 MODIFIE LE MOT DE PASSE ICI (entre les guillemets) :
-        const bonMotDe Passe = "bristol2026"; 
+        // LE MOT DE PASSE EST LA 
+        const bonMotDePasse = "Maxou"; 
 
         function checkPassword() {
             const userPassword = document.getElementById("password-input").value;
             const loginBox = document.getElementById("login-box");
             const secretContent = document.getElementById("secret-content");
             const errorMsg = document.getElementById("error-msg");
+            const maVideo = document.getElementById("maVideo");
 
-            if (userPassword === bonMotDe Passe) {
+            if (userPassword === bonMotDePasse) {
                 loginBox.style.display = "none";
                 secretContent.style.display = "block";
+                
+                // C'EST ICI POUR LA VIDÉO !
+                // Remplace "ID_DE_TA_VIDEO" par le code de ta vidéo Youtube
+                // genre si ton lien c'est youtube.com/watch?v=dQw4w9WgXcQ, tu mets juste dQw4w9WgXcQ
+                maVideo.src = "https://www.youtube.com/embed/ID_DE_TA_VIDEO?autoplay=1";
             } else {
                 errorMsg.style.display = "block";
             }
         }
 
-        // Permet d'appuyer sur "Entrée" pour valider
         document.getElementById("password-input").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 checkPassword();
